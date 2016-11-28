@@ -1,5 +1,5 @@
 package dev.ini;
-
+import dev.dao.ini.impl.MediaDaoUserImpl;
 import dev.models.User;
 import dev.models.ini.TypeOfAttribute;
 import dev.models.ini.TypeOfEntity;
@@ -9,12 +9,49 @@ import dev.services.ini.MediaServiceUser;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.*;
 
+@EnableTransactionManagement
 public class Initial {
     private static final Logger logger = Logger.getLogger(Initial.class);
-
+    
+    
+    public static void main(String[] args) {
+    	System.out.println("G " + Initial.class.getSimpleName());
+    	ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/beans.xml");
+		
+		MediaService service = (MediaService) context.getBean("storageService");
+		TypeOfEntity e = Initial.getUserInfoType();		
+		service.save(e);
+		
+		e = Initial.getChallengType();
+		service.save(e);
+		
+		MediaServiceUser serviceUser = (MediaServiceUser) context.getBean("storageServiceUser");
+		User user = new User("name1");
+		
+		serviceUser.add(user);
+		
+		/*MediaDaoUserImpl daoUser = (MediaDaoUserImpl) context.getBean("devUserDaoImpl");
+		
+		User user = new User("name1");
+		
+		daoUser.add(user);*/
+		
+		//user = new User("name2");
+		//serviceUser.add(user);
+		
+		//serviceUser.getAll();
+		
+		/*logger.info("Список всех type_of_entity:");
+		for (TypeOfEntity type : service.getAll()) {
+			logger.info(type);
+		}*/
+    }
+    
+    
     static TypeOfEntity getUserInfoType() {
     	TypeOfEntity t = new TypeOfEntity();
     	
@@ -62,32 +99,6 @@ public class Initial {
     	    	
     	t.setAttributes(list);    	    	
     	return t;
-    }
-    
-    public static void main(String[] args) {
-		System.out.println("G " + Initial.class.getSimpleName());
-    	ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/beans.xml");
-		
-		MediaService service = (MediaService) context.getBean("storageService");
-		
-		
-		TypeOfEntity e = Initial.getUserInfoType();		
-		service.save(e);
-		
-		e = Initial.getChallengType();
-		service.save(e);
-		
-		
-		MediaServiceUser serviceUser = (MediaServiceUser) context.getBean("storageServiceUser");
-		User user = new User("name1");
-		
-		//serviceUser.add(user);
-		
-		
-		/*logger.info("Список всех type_of_entity:");
-		for (TypeOfEntity type : service.getAll()) {
-			logger.info(type);
-		}*/
     }
     
 }
