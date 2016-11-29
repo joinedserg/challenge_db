@@ -38,6 +38,17 @@ public class User {
     //@JoinColumn(name="name_fk")
     private Name name;
 
+    @OneToOne(mappedBy="user", cascade=CascadeType.ALL)
+    private Surname surname;
+
+    public Surname getSurname() {
+        return surname;
+    }
+
+    public void setSurname(Surname surname) {
+        this.surname = surname;
+    }
+    
     public Integer getId() {
         return entity_id;
     }

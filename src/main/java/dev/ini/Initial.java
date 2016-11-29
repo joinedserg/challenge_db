@@ -1,6 +1,7 @@
 package dev.ini;
 import dev.models.User;
 import dev.models.simpleentity.Name;
+import dev.models.simpleentity.Surname;
 import dev.services.ini.MediaServiceUser;
 
 import org.apache.log4j.Logger;
@@ -29,9 +30,12 @@ public class Initial {
 		User user = new User();
                 
                 Name n = new Name("hhh");
+                Surname s = new Surname("aaa");
+                user.setSurname(s);
                 //n.setAttribute_id(1);
                 user.setName(n);
 		n.setUser(user);
+                s.setUser(user);
 		serviceUser.add(user);
 		
 		/*MediaDaoUserImpl daoUser = (MediaDaoUserImpl) context.getBean("devUserDaoImpl");
