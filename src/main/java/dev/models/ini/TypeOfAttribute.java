@@ -3,8 +3,13 @@ package dev.models.ini;
 import javax.persistence.*;
 import java.util.*;
 
+<<<<<<< HEAD
 @Entity
 @Table(name="attributes")
+=======
+//@Entity
+//@Table(name="attributes")
+>>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
 public class TypeOfAttribute {
 	
 	@Id 

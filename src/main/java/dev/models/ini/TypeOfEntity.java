@@ -4,8 +4,13 @@ import javax.persistence.*;
 import java.util.List;
 
 
+<<<<<<< HEAD
 @Entity
 @Table(name= "types_of_entities")
+=======
+//@Entity
+//@Table(name= "types_of_entities")
+>>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
 public class TypeOfEntity {
 	
 	@Id

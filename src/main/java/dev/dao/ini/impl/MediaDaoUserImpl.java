@@ -13,7 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import dev.dao.ini.MediaDaoUser;
+<<<<<<< HEAD
 import dev.models.RegEntity;
+=======
+>>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
 import dev.models.User;
 import dev.models.ini.TypeOfAttribute;
 
@@ -31,6 +34,7 @@ public class MediaDaoUserImpl implements MediaDaoUser {
     }
     
 	public void add(User user) {
+<<<<<<< HEAD
 		RegEntity r = new RegEntity();
 		//em.getTransaction().begin();
 		
@@ -73,6 +77,17 @@ public class MediaDaoUserImpl implements MediaDaoUser {
     
 	public void save(User user) {
 		em.persist(user);
+=======
+		
+		
+                em.persist(user);
+		
+		
+	}
+    
+	public void save(User user) {
+		//em.persist(user);
+>>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
 	}
 	
 	

@@ -1,9 +1,15 @@
 package dev.ini;
+<<<<<<< HEAD
 import dev.dao.ini.impl.MediaDaoUserImpl;
 import dev.models.User;
 import dev.models.ini.TypeOfAttribute;
 import dev.models.ini.TypeOfEntity;
 import dev.services.ini.MediaService;
+=======
+import dev.models.User;
+import dev.models.simpleentity.Name;
+import dev.models.simpleentity.Surname;
+>>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
 import dev.services.ini.MediaServiceUser;
 
 import org.apache.log4j.Logger;
@@ -11,7 +17,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+<<<<<<< HEAD
 import java.util.*;
+=======
+>>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
 
 @EnableTransactionManagement
 public class Initial {
@@ -22,6 +31,7 @@ public class Initial {
     	System.out.println("G " + Initial.class.getSimpleName());
     	ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/beans.xml");
 		
+<<<<<<< HEAD
 		MediaService service = (MediaService) context.getBean("storageService");
 		TypeOfEntity e = Initial.getUserInfoType();		
 		service.save(e);
@@ -32,6 +42,25 @@ public class Initial {
 		MediaServiceUser serviceUser = (MediaServiceUser) context.getBean("storageServiceUser");
 		User user = new User("name1");
 		
+=======
+		/*MediaService service = (MediaService) context.getBean("storageService");
+		//TypeOfEntity e = Initial.getUserInfoType();		
+		service.save(e);
+		
+		e = Initial.getChallengType();
+		service.save(e);*/
+		
+		MediaServiceUser serviceUser = (MediaServiceUser) context.getBean("storageServiceUser");
+		User user = new User();
+                
+                Name n = new Name("hhh");
+                Surname s = new Surname("aaa");
+                user.setSurname(s);
+                //n.setAttribute_id(1);
+                user.setName(n);
+		n.setUser(user);
+                s.setUser(user);
+>>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
 		serviceUser.add(user);
 		
 		/*MediaDaoUserImpl daoUser = (MediaDaoUserImpl) context.getBean("devUserDaoImpl");
@@ -51,11 +80,19 @@ public class Initial {
 		}*/
     }
     
+<<<<<<< HEAD
     
     static TypeOfEntity getUserInfoType() {
     	TypeOfEntity t = new TypeOfEntity();
     	
     	t.setNameTypeEntity(User.class.getSimpleName());
+=======
+    /*
+    static TypeOfEntity getUserInfoType() {
+    	TypeOfEntity t = new TypeOfEntity();
+    	
+    	t.setNameTypeEntity(UserOld.class.getSimpleName());
+>>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
     	
     	List<TypeOfAttribute> list = new ArrayList<TypeOfAttribute>();
     	list.add(new TypeOfAttribute("name"));
@@ -71,11 +108,19 @@ public class Initial {
     	list.add(new TypeOfAttribute("active"));
     	list.add(new TypeOfAttribute("ref_image"));*/
     	
+<<<<<<< HEAD
     	t.setAttributes(list);
     	return t;
     }
     
     static TypeOfEntity getChallengType() {
+=======
+    	/*t.setAttributes(list);
+    	return t;
+    }*/
+    
+    /*static TypeOfEntity getChallengType() {
+>>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
     	TypeOfEntity t = new TypeOfEntity();
     	
     	t.setNameTypeEntity("challenge");
@@ -97,9 +142,16 @@ public class Initial {
     	list.add(new TypeOfAttribute("report"));
     	list.add(new TypeOfAttribute("status"));*/
     	    	
+<<<<<<< HEAD
     	t.setAttributes(list);    	    	
     	return t;
     }
     
+=======
+    	/*t.setAttributes(list);    	    	
+    	return t;
+    }
+    */
+>>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
 }
 
