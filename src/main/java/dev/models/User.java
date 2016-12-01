@@ -35,7 +35,7 @@ public class User {
     
     
     @JoinTable(name="values",
-            joinColumns={@JoinColumn(name = "entity_id")},
+            joinColumns=@JoinColumn(name = "entity_id"),
             inverseJoinColumns = @JoinColumn(name = "entity_id")
     )
     @WhereJoinTable(clause = "attribute_id = 0")
@@ -49,7 +49,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name="entity_id")
     )
     @WhereJoinTable(clause = "attribute_id = 1")
-    @Column(name="text_value")
+    @Column(table="values", name="text_value")
     private String surname;
     
     
@@ -61,8 +61,8 @@ public class User {
     private Integer name_attribute_id = 0;
     
     @JoinTable(name="values",
-    joinColumns=@JoinColumn(name = "entity_id"),
-    inverseJoinColumns = @JoinColumn(name = "entity_id")
+        joinColumns=@JoinColumn(name = "entity_id"), 
+        inverseJoinColumns = @JoinColumn(name = "entity_id")
     )
     @Column(table="values", name="attribute_id")
     private Integer surname_attribute_id = 1;

@@ -27,13 +27,13 @@ public class Initial {
 		service.save(e);*/
 		
 		MediaServiceUser serviceUser = (MediaServiceUser) context.getBean("storageServiceUser");
-		User user = new User();
+		User user = new User("ffff", "aaaa");
                 
-                Name n = new Name("hhh");
+                //Name n = new Name("hhh");
                 //Surname s = new Surname("aaa");
                 //user.setSurname(s);
                 //n.setAttribute_id(1);
-                user.setName(n);
+                //user.setName(n);
 		//n.setUser(user);
                 //s.setUser(user);
 		serviceUser.add(user);
