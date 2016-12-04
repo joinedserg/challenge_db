@@ -15,11 +15,9 @@
 		<property name="driverClassName" value="org.postgresql.Driver" />
 		<property name="url" value="jdbc:postgresql://localhost:5432/challenge2" />
 		<property name="username" value="postgres" />
-<<<<<<< HEAD
+
 		<property name="password" value="1234" />
-=======
-		<property name="password" value="5q23Gd8bP" />
->>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
+
 	</bean>
 
 	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />

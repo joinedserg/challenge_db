@@ -13,12 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import dev.dao.ini.MediaDaoUser;
-<<<<<<< HEAD
-import dev.models.RegEntity;
-=======
->>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
+
+
 import dev.models.User;
-import dev.models.ini.TypeOfAttribute;
 
 @Repository
 public class MediaDaoUserImpl implements MediaDaoUser {
@@ -30,64 +27,12 @@ public class MediaDaoUserImpl implements MediaDaoUser {
     
     
     public void setTransactionManager(PlatformTransactionManager transactionManager) {
-        this.transactionManager = transactionManager;
+        //this.transactionManager = transactionManager;
     }
     
-	public void add(User user) {
-<<<<<<< HEAD
-		RegEntity r = new RegEntity();
-		//em.getTransaction().begin();
-		
-		//TransactionDefinition definition = new DefaultTransactionDefinition();
-        //TransactionStatus status = transactionManager.getTransaction(definition);
-		
-		em.persist(r);
-		
-		
-		//transactionManager.commit(status);
-		
-		/*em.flush();*/
-		
-		//em.getTransaction().commit();
-		/*
-		//@Inject
-		JpaTransactionManager txManager;
-
-		DefaultTransactionDefinition def = new DefaultTransactionDefinition();
-		def.setName("rootTransaction");
-		def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
-		
-		
-		txManager.commit();*/
-		
-		int id = r.getId();
-		user.setId(id);
-		
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		
-		String sql = "Insert into values(entity_id, attribute_id, text_value) values(:entity_id, 1, 'ff')";
-		Query query = em.createNativeQuery(sql);
-		
-		
-		query.setParameter("entity_id", id);
-		int row = query.executeUpdate();
-		System.out.println("Inserted ros: " + row);
-		
-	}
     
 	public void save(User user) {
 		em.persist(user);
-=======
-		
-		
-                em.persist(user);
-		
-		
-	}
-    
-	public void save(User user) {
-		//em.persist(user);
->>>>>>> 28dc78b846c939704e35d66847d4408b8557839e
 	}
 	
 	

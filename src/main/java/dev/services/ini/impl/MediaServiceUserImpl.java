@@ -19,10 +19,6 @@ public class MediaServiceUserImpl implements MediaServiceUser {
 	@Autowired
 	private MediaDaoUser dao;
 	
-	@Transactional
-	public void add(User user) {
-		dao.add(user);
-	}
 	
 	@Transactional
 	public void save(User user) {
