@@ -12,47 +12,40 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
-import dev.dao.ini.MediaDaoUser;
-
-
-import dev.models.User;
+import dev.models.BaseEntity;
+import dev.dao.ini.MediaDaoEntity;
 
 @Repository
-public class MediaDaoUserImpl implements MediaDaoUser {
+public class MediaDaoEntityImpl implements MediaDaoEntity {
 
     @PersistenceContext
     private EntityManager em;
-    
+
     private PlatformTransactionManager transactionManager;
-    
-    
+
     public void setTransactionManager(PlatformTransactionManager transactionManager) {
         //this.transactionManager = transactionManager;
     }
-    
-    
-	public void save(User user) {
-		em.persist(user);
-	}
-	
-	
-    public List<User> getAll() {
-    	//List<User> list = em.createNamedQuery("getAllUser", User.class).getResultList();
-    	//return list;
-    	return null;    	
+
+    public void save(BaseEntity entity) {
+        em.persist(entity);
     }
 
-
-
-    
-	
-    /*public void save(TypeOfAttribute type) {
-        em.persist(type);
+    public List<BaseEntity> getAll() {
+        List<BaseEntity> list = em.createNamedQuery("from BaseEntity", BaseEntity.class).getResultList();
+        return list;
     }
 
-    public List<TypeOfAttribute> getAll() {
-        return em.createQuery("from TypeOfAttribute", TypeOfAttribute.class).getResultList();
-    }*/
+    @Override
+    public void delete(BaseEntity entity) {
+        em.remove(em.merge(entity));
+    }
 
-	
+    @Override
+    public void update(BaseEntity entity) {
+        em.merge(entity);
+    }
+   
 }
+
+

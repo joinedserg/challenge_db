@@ -1,0 +1,10 @@
+//view
+
+drop table attribute cascade;
+drop table entities cascade;
+drop table values cascade;
+
+
+select entities.entity_id, values.attribute_id, values.text_value 
+from entities
+left outer join values on entities.entity_id = values.entity_id;
