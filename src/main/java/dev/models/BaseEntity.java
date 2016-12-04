@@ -42,7 +42,7 @@ public class BaseEntity {
     
     @Id
     @GeneratedValue
-    @Column(name="entity_id", updatable=true)
+    @Column(name="entity_id")
     public Integer getId() {
         return id;
     }
@@ -51,9 +51,9 @@ public class BaseEntity {
         this.id = id;
     }
     
-    @OneToMany(fetch=FetchType.EAGER,
+    @OneToMany(mappedBy="entity", fetch=FetchType.EAGER,
 			cascade = CascadeType.ALL)
-    @JoinColumn(name="entity_id", updatable=true)
+    //@JoinColumn(name="entity_id")
     public List<Attribute> getAttributes() {
         return new ArrayList<Attribute>(attributes.values());   
     }

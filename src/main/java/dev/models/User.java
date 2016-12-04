@@ -37,6 +37,7 @@ public class User {
     @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
     @JoinColumn(name = "entity_id")
+    
     public List<Attribute> getAttr() {
         return new ArrayList(attributes.values());
     }

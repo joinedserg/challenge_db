@@ -22,6 +22,19 @@ public class Attribute {
     @Column(name = "text_value", updatable = true)
     private String value;
 
+    @ManyToOne
+    //@JoinColumn(name="entity_id", updatable=true)
+    //@Column(name="entity_id")
+    private BaseEntity entity;
+
+    public BaseEntity getEntity() {
+        return entity;
+    }
+
+    public void setEntity(BaseEntity entity) {
+        this.entity = entity;
+    }
+ 
     //@ManyToOne
     //@Cascade(value=CascadeType.ALL)
     //@JoinColumn(name=entity)

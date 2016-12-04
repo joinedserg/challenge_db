@@ -24,9 +24,9 @@ public class Initial {
         BaseEntity entity = new BaseEntity("name1", "surname1");
         serviceUser.save(entity);
 
-        /*entity = new BaseEntity("name2", "surname2");
-        serviceUser.save(entity);
-        */
+        //entity = new BaseEntity("name2", "surname2");
+        //serviceUser.save(entity);
+        
         entity.setAttribute("name", "changed name");
         serviceUser.update(entity);
         
