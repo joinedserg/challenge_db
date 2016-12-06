@@ -1,6 +1,5 @@
 package dev.ini;
 
-import dev.models.User;
 import dev.models.BaseEntity;
 
 
@@ -15,6 +14,9 @@ public class Initial {
 
     private static final Logger logger = Logger.getLogger(Initial.class);
 
+    
+    
+    
     public static void main(String[] args) {
         System.out.println("G " + Initial.class.getSimpleName());
 
@@ -24,11 +26,12 @@ public class Initial {
         BaseEntity entity = new BaseEntity("name1", "surname1");
         serviceUser.save(entity);
 
+        
         //entity = new BaseEntity("name2", "surname2");
         //serviceUser.save(entity);
         
-        entity.setAttribute("name", "changed name");
-        serviceUser.update(entity);
+        //entity.setAttribute("name", "changed name");
+        //serviceUser.update(entity);
         
         
     }

@@ -4,16 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import javax.persistence.*;
 
 
 //add
@@ -27,13 +19,33 @@ import javax.persistence.Transient;
 public class BaseEntity {
     public BaseEntity() {
         attributes = new HashMap<String, Attribute>();
+        
     }
     
     //TODO: Only 4 DEBUG!!!
     public BaseEntity(String name, String surname) {
         attributes = new HashMap<String, Attribute>();
-        attributes.put("name",  new Attribute(0, name));
-        attributes.put("surname", new Attribute(1, surname));
+        
+        Attribute attr = new Attribute(); 
+        attr.setValue(name);
+        AttributePK pk = new AttributePK();
+        pk.setAttribute_id(1);
+        pk.setEnitity_id(1);
+        attr.setKey(pk);
+        
+        attributes.put("name",  attr);
+        attr = new Attribute();
+        pk = new AttributePK();
+        pk.setAttribute_id(2);
+        pk.setEnitity_id(1);
+        attr.setKey(pk);
+        
+        
+        attr.setValue(surname);
+        attributes.put("surname", attr);
+        
+        this.id = 1;
+        
         
     }
     
@@ -41,19 +53,21 @@ public class BaseEntity {
     protected Map<String, Attribute> attributes;
     
     @Id
-    @GeneratedValue
+    //@GeneratedValue
     @Column(name="entity_id")
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
-    
-    @OneToMany(mappedBy="entity", fetch=FetchType.EAGER,
-			cascade = CascadeType.ALL)
-    //@JoinColumn(name="entity_id")
+	
+	
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY/*????*/)
+    @JoinColumns({
+    	@JoinColumn(name="entity_id", referencedColumnName="entity_id")
+    })
     public List<Attribute> getAttributes() {
         return new ArrayList<Attribute>(attributes.values());   
     }

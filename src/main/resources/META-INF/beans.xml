@@ -16,7 +16,7 @@
 		<property name="url" value="jdbc:postgresql://localhost:5432/challenge2" />
 		<property name="username" value="postgres" />
 
-		<property name="password" value="5q23Gd8bP" />
+		<property name="password" value="1234" />
 
 	</bean>
 

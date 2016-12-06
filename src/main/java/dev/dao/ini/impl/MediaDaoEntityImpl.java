@@ -36,12 +36,12 @@ public class MediaDaoEntityImpl implements MediaDaoEntity {
         return list;
     }
 
-    @Override
+    //@Override
     public void delete(BaseEntity entity) {
         em.remove(em.merge(entity));
     }
 
-    @Override
+    //@Override
     public void update(BaseEntity entity) {
         em.merge(entity);
     }
