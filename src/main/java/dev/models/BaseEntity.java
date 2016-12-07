@@ -28,17 +28,12 @@ public class BaseEntity {
         
         Attribute attr = new Attribute(); 
         attr.setValue(name);
-        AttributePK pk = new AttributePK();
-        pk.setAttribute_id(1);
-        pk.setEnitity_id(1);
-        attr.setKey(pk);
-        
+        attr.setAttribute_id(1);
+  
         attributes.put("name",  attr);
         attr = new Attribute();
-        pk = new AttributePK();
-        pk.setAttribute_id(2);
-        pk.setEnitity_id(1);
-        attr.setKey(pk);
+        attr.setAttribute_id(2);
+
         
         
         attr.setValue(surname);
@@ -61,6 +56,9 @@ public class BaseEntity {
     
     public void setId(Integer id) {
         this.id = id;
+        for(Attribute attr : attributes.values()) {
+        	attr.setEntity_id(id);
+        }
     }
 	
 	
@@ -74,6 +72,18 @@ public class BaseEntity {
     
     public void setAttributes(List<Attribute> attr) {
         //TODO: warnnnnnn!!!!!!!!!!!
+    	//for()
+    	//for(Attribute at : attr) {
+    		/*if(at.getAttribute_id() == 1) {
+    			attributes.get("name").setEntity_id(at.getEntity_id());
+    			attributes.get("name").setValue(at.getValue());
+    		}
+    		else {
+    			attributes.get("surname").setEntity_id(at.getEntity_id());
+    			attributes.get("surname").setValue(at.getValue());
+    		}*/
+    	//}
+    	
         System.out.println("public void setAttributes(List<Attribute> attr)");
     }
     

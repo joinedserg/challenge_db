@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-@Embeddable
+
 public class AttributePK implements Serializable {
 	@Column(name="entity_id")
 	private Integer entity_id;
@@ -23,7 +23,7 @@ public class AttributePK implements Serializable {
 	}
 	
 	
-	public Integer getAttributeId() {
+	public Integer getAttribute_id() {
 		return attribute_id;
 	}
 	

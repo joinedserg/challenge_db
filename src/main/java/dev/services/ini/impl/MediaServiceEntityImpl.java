@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import dev.models.BaseEntity;
+import dev.models.*;
 import dev.dao.ini.MediaDaoEntity;
 import dev.services.ini.MediaServiceEntity;
 

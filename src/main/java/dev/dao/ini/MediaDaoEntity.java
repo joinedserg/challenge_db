@@ -1,7 +1,7 @@
 package dev.dao.ini;
 
 import java.util.List;
-import dev.models.BaseEntity;
+import dev.models.*;
 
 public interface MediaDaoEntity {
 	
