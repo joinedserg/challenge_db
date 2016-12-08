@@ -4,7 +4,16 @@ drop table attribute cascade;
 drop table entities cascade;
 drop table values cascade;
 
+//view get entity_type with its attribute_type
+select e.type_of_entity_id, e.name, a.attribute_id, a.name
+from types_of_entities as e 
+left join entity_attributes as e_a
+	on e.type_of_entity_id = e_a.type_of_entity_id
+		left join types_attributes as a
+			on e_a.attribute_id = a.attribute_id
 
+			
+//value entities with id
 select entities.entity_id, values.attribute_id, values.text_value 
 from entities
 left outer join values on entities.entity_id = values.entity_id;

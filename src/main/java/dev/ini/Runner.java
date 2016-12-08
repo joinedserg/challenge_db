@@ -1,27 +1,30 @@
 package dev.ini;
 
 import dev.models.*;
+import dev.services.ini.MediaServiceTypeOfAttribute;
+import dev.services.ini.MediaServiceTypeOfEntity;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import java.util.*;
-import dev.services.ini.*;
 
 @EnableTransactionManagement
-public class Initial {
+public class Runner {
 
-    private static final Logger logger = Logger.getLogger(Initial.class);
+    private static final Logger logger = Logger.getLogger(Runner.class);
 
     
     public static void main(String[] args) {
-        System.out.println("G " + Initial.class.getSimpleName());
+        System.out.println("G " + Runner.class.getSimpleName());
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/beans.xml");
+        InitialLoader.initial();
         
-        MediaServiceEntity serviceEntity = (MediaServiceEntity) context.getBean("storageServiceUser");
+        
+        /*MediaServiceEntity serviceEntity = (MediaServiceEntity) context.getBean("storageServiceUser");
         BaseEntity entity = new BaseEntity("name1", "surname1");
         
         serviceEntity.save(entity);
@@ -37,8 +40,10 @@ public class Initial {
         	
         }*/
         
+
         //entity.getAttributes().get(0).setValue("changed_value_attribute");
-//        serviceEntity.update(entity);
+        //serviceEntity.update(entity);*/
+
         //serviceEntity.delete(entity);
     }
 
