@@ -1,6 +1,7 @@
 package dev.dao.ini.impl;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -49,25 +50,28 @@ public class MediaDaoEntityImpl implements MediaDaoEntity {
         return list;
     }
 
-    //@Override
+    @Override
     public void delete(BaseEntity entity) {
-        //em.remove(em.merge(entity));
-    	em.remove(entity);
+    	//em.remove(em.merge(entity));
+    	//BaseEntity entity1 = em.find(BaseEntity.class, entity.getId());
+    	//entity = em.merge(entity1);
+    	
+    	BaseEntity entity1 = em.find(BaseEntity.class, entity.getId());
+    	
+    	System.out.println(entity1 + "\n");
+    	em.remove(entity1);
     }
 
-    //@Override
+    @Override
     public void update(BaseEntity entity) {
-        //entity.setId(entity.getId());
-    	/*System.out.println("\n\nupdate");
-        System.out.println("id: " + entity.getId());
-        for(Attribute attr : entity.getAttributes()) {
-        	System.out.println("attr entity_id: " + attr.getEntity_id() 
-        			+ " attr_id: " + attr.getAttribute_id() 
-        			+ " value: " + attr.getValue());
-        }*/
-
     	em.merge(entity);
     }
+
+
+	@Override
+	public BaseEntity findById(Integer idEntity) {
+		return em.find(BaseEntity.class, idEntity);
+	}
    
 }
 

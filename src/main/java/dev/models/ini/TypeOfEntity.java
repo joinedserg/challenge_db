@@ -1,4 +1,4 @@
-package dev.models;
+package dev.models.ini;
 
 import java.util.ArrayList;
 import javax.persistence.*;

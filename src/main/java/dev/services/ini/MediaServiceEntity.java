@@ -14,4 +14,6 @@ public interface MediaServiceEntity {
     
     public void delete(BaseEntity entity);
 
+    public BaseEntity findById(Integer idEntity);
+    
 }

@@ -1,31 +1,31 @@
 package dev.ini;
 
-import dev.models.TypeOfAttribute;
-import dev.models.TypeOfEntity;
+import dev.models.ini.TypeOfAttribute;
+import dev.models.ini.TypeOfEntity;
 import dev.services.ini.MediaServiceTypeOfAttribute;
 import dev.services.ini.MediaServiceTypeOfEntity;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class InitialLoader {
     
-    public static void initial() {
+    public static void initial(ApplicationContext context) {
         //try load from base
         
         //else 
         //create
-        createContext();
+        createContext(context);
         
         
         //return null;
     }
     
-    private static void createContext() {
-        
-        ApplicationContext context = new ClassPathXmlApplicationContext("META-INF/beans.xml");
-        
+    private static void createContext(ApplicationContext context) {
+
         TypeOfAttribute attrName = new TypeOfAttribute(1, "name", 1);
         TypeOfAttribute attrSurname = new TypeOfAttribute(2, "surname", 1);
         TypeOfAttribute attrDate = new TypeOfAttribute(3, "date", 2);

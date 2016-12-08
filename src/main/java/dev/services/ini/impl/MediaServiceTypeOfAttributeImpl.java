@@ -1,8 +1,9 @@
 package dev.services.ini.impl;
 
 import dev.dao.ini.MediaDaoTypeOfAttribute;
-import dev.models.TypeOfAttribute;
+import dev.models.ini.TypeOfAttribute;
 import dev.services.ini.MediaServiceTypeOfAttribute;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

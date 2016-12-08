@@ -6,14 +6,16 @@
 package dev.dao.ini.impl;
 
 import dev.dao.ini.MediaDaoTypeOfAttribute;
-import dev.models.TypeOfAttribute;
+import dev.models.ini.TypeOfAttribute;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author Наталья
+ * @author пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
  */
 @Repository
 public class MediaDaoTypeOfAttributeImpl implements MediaDaoTypeOfAttribute {

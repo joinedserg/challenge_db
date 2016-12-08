@@ -5,11 +5,11 @@
  */
 package dev.services.ini;
 
-import dev.models.TypeOfAttribute;
+import dev.models.ini.TypeOfAttribute;
 
 /**
  *
- * @author Наталья
+ * @author пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
  */
 public interface MediaServiceTypeOfAttribute {
     public void save(TypeOfAttribute type);

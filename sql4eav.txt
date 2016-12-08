@@ -14,9 +14,10 @@ left join entity_attributes as e_a
 
 			
 //value entities with id
-select entities.entity_id, values.attribute_id, values.text_value 
-from entities
-left outer join values on entities.entity_id = values.entity_id;
+SELECT entities.entity_id, values.attribute_id, values.text_value 
+FROM entities
+LEFT OUTER JOIN values ON entities.entity_id = values.entity_id
+ORDER BY entity_id, attribute_id;
 
 
 create sequence serial start 1;

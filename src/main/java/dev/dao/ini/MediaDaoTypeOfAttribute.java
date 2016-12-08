@@ -5,11 +5,11 @@
  */
 package dev.dao.ini;
 
-import dev.models.TypeOfAttribute;
+import dev.models.ini.TypeOfAttribute;
 
 /**
  *
- * @author Наталья
+ * @author пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
  */
 public interface MediaDaoTypeOfAttribute {
     public void save(TypeOfAttribute typeOfEntity);

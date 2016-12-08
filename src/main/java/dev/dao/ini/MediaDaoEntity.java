@@ -9,4 +9,6 @@ public interface MediaDaoEntity {
     public List<BaseEntity> getAll();
     public void delete(BaseEntity entity);
     public void update(BaseEntity entity);
+    
+    public BaseEntity findById(Integer idEntity);
 }

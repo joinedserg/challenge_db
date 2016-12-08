@@ -1,4 +1,4 @@
-package dev.models;
+package dev.models.ini;
 
 import javax.persistence.*;
 import java.util.*;

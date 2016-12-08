@@ -1,7 +1,8 @@
 package dev.ini;
 
-import dev.models.TypeOfAttribute;
-import dev.models.TypeOfEntity;
+import dev.models.ini.TypeOfAttribute;
+import dev.models.ini.TypeOfEntity;
+
 import java.util.HashMap;
 import java.util.Map;
 

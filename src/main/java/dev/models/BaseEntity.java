@@ -18,28 +18,29 @@ import javax.persistence.*;
 @Table(name="entities")
 public class BaseEntity {
     public BaseEntity() {
-        attributes = new HashMap<String, Attribute>();
+        attributes = new HashMap<Integer, Attribute>();
         
     }
     
     //TODO: Only 4 DEBUG!!!
     public BaseEntity(String name, String surname) {
-        attributes = new HashMap<String, Attribute>();
+        //this.setId(1);
+    	
+    	attributes = new HashMap<Integer, Attribute>();
         
-        Attribute attr = new Attribute(); 
+        Attribute attr = new Attribute();
         attr.setValue(name);
+        //attr.setEntity_id(1);
         attr.setAttribute_id(1);
-  
-        attributes.put("name",  attr);
-        
+        this.attributes.put(1, attr);
         
         attr = new Attribute();
-        attr.setAttribute_id(2);
         attr.setValue(surname);
-        attributes.put("surname", attr);
+        //attr.setEntity_id(1);
+        attr.setAttribute_id(2);
         
-        this.id = 1;
         
+        this.attributes.put(2, attr);
         
     }
     
@@ -54,16 +55,13 @@ public class BaseEntity {
     
     
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER/*????*/)
-    //@CollectionOfElements(fetch = FetchType.LAZY)
-    //@MapKey(columns = @Column(name = "name"))
-    //@MapKey(columns=@Column(name="name"))
-    @javax.persistence.MapKey(name = "name")
+    @MapKey(name = "attribute_id")
     @JoinColumns({
     	@JoinColumn(name="entity_id", referencedColumnName="entity_id", 
-    			insertable=true, updatable=true),
-    	//@JoinColumn(name="")
+    			insertable=false, updatable=false),
     })
-    protected Map<String, Attribute> attributes;
+    /*ID attribute, Attribute value*/
+    protected Map<Integer, Attribute> attributes;
     
     
     public Integer getId() {
@@ -78,72 +76,16 @@ public class BaseEntity {
         }
     }
 	
-	
     
-    /*public List<Attribute> getAttributes() {
-        return new ArrayList<Attribute>(attributes.values());   
-    }*/
-    
-    /*public void setAttributes(List<Attribute> attr) {
-        //TODO: warnnnnnn!!!!!!!!!!!
-    	//for()
-    	System.out.println("\npublic void setAttributes(List<Attribute> attr)");
-    	
-    	if(this.attributes == null) {
-    		this.attributes = new HashMap<String, Attribute>();
-    	}
-    	
-    	for(String str : this.attributes.keySet()) {
-    		System.out.println(str);
-    	}
-    	
-    	if(attr.getClass().getSimpleName().equals("PersistentBag")) {
-    		System.out.println("PersistentBag");
-    		return;
-    	}
-    	
-    	for(Attribute at : attr) {
-    		System.out.println(at);
-    		
-    		if(at.getAttribute_id() == 1) {
-    			if(attributes.get("name") == null) {
-    				attributes.put("name", at);
-    			}
-    			else {
-    				attributes.get("name").setValue(at.getValue());
-    			}
-    		}
-    		else if(at.getAttribute_id() == 2) {
-    			if(attributes.get("surname") == null) {
-    				attributes.put("surname", at);
-    			}
-    			else {
-    				attributes.get("surname").setValue(at.getValue());
-    			}
-    		}
-    	}
-    	
-    	
-    	
-        
-    }*/
-    
-    public Map<String, Attribute> getAttributes() {
+    public Map<Integer, Attribute> getAttributes() {
 		return attributes;
 	}
 
-	public void setAttributes(Map<String, Attribute> attributes) {
+	public void setAttributes(Map<Integer, Attribute> attributes) {
 		this.attributes = attributes;
 	}
 
-	public void setAttribute(String name, String value) {
-        this.attributes.get(name).setValue(value);
-    }
-    
-    public String getAttributeValue(String name) {
-        return attributes.get(name).getValue();
-    }
-    
+	
     public String toString() {
     	String str = "";
     	str = "id: " + this.id;
@@ -151,8 +93,6 @@ public class BaseEntity {
     		str += "\n" + attr;
     		
     	}
-    	
-    	
     	return str;
     }
     

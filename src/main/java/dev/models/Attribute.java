@@ -18,17 +18,17 @@ public class Attribute implements Serializable {
 	@Column(name="entity_id", insertable=true, updatable=false)
 	private Integer entity_id;
 	
-	private String name;
+	//private String name;
 	
 	
 
-    public String getName() {
+    /*public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
-	}
+	}*/
 
 	public Integer getAttribute_id() {
 		return attribute_id;
