@@ -31,11 +31,10 @@ public class BaseEntity {
         attr.setAttribute_id(1);
   
         attributes.put("name",  attr);
+        
+        
         attr = new Attribute();
         attr.setAttribute_id(2);
-
-        
-        
         attr.setValue(surname);
         attributes.put("surname", attr);
         
@@ -44,55 +43,117 @@ public class BaseEntity {
         
     }
     
-    protected Integer id;
-    protected Map<String, Attribute> attributes;
+    
+    
     
     @Id
     //@GeneratedValue
-    @Column(name="entity_id")
+    @Column(name="entity_id", insertable=true, updatable=false)
+    protected Integer id;
+    
+    
+    
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER/*????*/)
+    //@CollectionOfElements(fetch = FetchType.LAZY)
+    //@MapKey(columns = @Column(name = "name"))
+    //@MapKey(columns=@Column(name="name"))
+    @javax.persistence.MapKey(name = "name")
+    @JoinColumns({
+    	@JoinColumn(name="entity_id", referencedColumnName="entity_id", 
+    			insertable=true, updatable=true),
+    	//@JoinColumn(name="")
+    })
+    protected Map<String, Attribute> attributes;
+    
+    
     public Integer getId() {
         return id;
     }
     
     public void setId(Integer id) {
         this.id = id;
+        
         for(Attribute attr : attributes.values()) {
         	attr.setEntity_id(id);
         }
     }
 	
 	
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY/*????*/)
-    @JoinColumns({
-    	@JoinColumn(name="entity_id", referencedColumnName="entity_id")
-    })
-    public List<Attribute> getAttributes() {
-        return new ArrayList<Attribute>(attributes.values());   
-    }
     
-    public void setAttributes(List<Attribute> attr) {
+    /*public List<Attribute> getAttributes() {
+        return new ArrayList<Attribute>(attributes.values());   
+    }*/
+    
+    /*public void setAttributes(List<Attribute> attr) {
         //TODO: warnnnnnn!!!!!!!!!!!
     	//for()
-    	//for(Attribute at : attr) {
-    		/*if(at.getAttribute_id() == 1) {
-    			attributes.get("name").setEntity_id(at.getEntity_id());
-    			attributes.get("name").setValue(at.getValue());
-    		}
-    		else {
-    			attributes.get("surname").setEntity_id(at.getEntity_id());
-    			attributes.get("surname").setValue(at.getValue());
-    		}*/
-    	//}
+    	System.out.println("\npublic void setAttributes(List<Attribute> attr)");
     	
-        System.out.println("public void setAttributes(List<Attribute> attr)");
-    }
+    	if(this.attributes == null) {
+    		this.attributes = new HashMap<String, Attribute>();
+    	}
+    	
+    	for(String str : this.attributes.keySet()) {
+    		System.out.println(str);
+    	}
+    	
+    	if(attr.getClass().getSimpleName().equals("PersistentBag")) {
+    		System.out.println("PersistentBag");
+    		return;
+    	}
+    	
+    	for(Attribute at : attr) {
+    		System.out.println(at);
+    		
+    		if(at.getAttribute_id() == 1) {
+    			if(attributes.get("name") == null) {
+    				attributes.put("name", at);
+    			}
+    			else {
+    				attributes.get("name").setValue(at.getValue());
+    			}
+    		}
+    		else if(at.getAttribute_id() == 2) {
+    			if(attributes.get("surname") == null) {
+    				attributes.put("surname", at);
+    			}
+    			else {
+    				attributes.get("surname").setValue(at.getValue());
+    			}
+    		}
+    	}
+    	
+    	
+    	
+        
+    }*/
     
-    public void setAttribute(String name, String value) {
+    public Map<String, Attribute> getAttributes() {
+		return attributes;
+	}
+
+	public void setAttributes(Map<String, Attribute> attributes) {
+		this.attributes = attributes;
+	}
+
+	public void setAttribute(String name, String value) {
         this.attributes.get(name).setValue(value);
     }
     
     public String getAttributeValue(String name) {
         return attributes.get(name).getValue();
+    }
+    
+    public String toString() {
+    	String str = "";
+    	str = "id: " + this.id;
+    	for(Attribute attr : this.attributes.values()) {
+    		str += "\n" + attr;
+    		
+    	}
+    	
+    	
+    	return str;
     }
     
 }

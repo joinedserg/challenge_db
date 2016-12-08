@@ -5,22 +5,32 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity(name="values")
-//@Table(uniqueConstraints = { @UniqueConstraint(columnNames = {"entity_id", "attribute_id"})})
-//@Table(name = "values")
 @IdClass(AttributePK.class)
 public class Attribute implements Serializable {
 
 
 	@Id
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name="attribute_id", insertable=true, updatable=false)
 	private Integer attribute_id;
 	
 	@Id
+	@Column(name="entity_id", insertable=true, updatable=false)
 	private Integer entity_id;
+	
+	private String name;
 	
 	
 
-    public Integer getAttribute_id() {
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getAttribute_id() {
 		return attribute_id;
 	}
 
@@ -40,7 +50,7 @@ public class Attribute implements Serializable {
 
 
 
-	@Column(name = "text_value", updatable = true)
+	@Column(name = "text_value", updatable = true, insertable=true)
     private String value;
 
 
@@ -77,6 +87,12 @@ public class Attribute implements Serializable {
 		return result;
     }
     
+    public String toString() {
+    	
+    	return "entity_id: " + this.entity_id 
+    			+ "  attribute_id: " + this.attribute_id 
+    			+ "  value: " + this.value;
+    }
     
 }
 

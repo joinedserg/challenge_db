@@ -45,7 +45,7 @@ public class MediaDaoEntityImpl implements MediaDaoEntity {
     }
 
     public List<BaseEntity> getAll() {
-        List<BaseEntity> list = em.createNamedQuery("from BaseEntity", BaseEntity.class).getResultList();
+        List<BaseEntity> list = em.createQuery("from BaseEntity", BaseEntity.class).getResultList();
         return list;
     }
 
@@ -57,14 +57,14 @@ public class MediaDaoEntityImpl implements MediaDaoEntity {
 
     //@Override
     public void update(BaseEntity entity) {
-        entity.setId(entity.getId());
-    	System.out.println("\n\nupdate");
+        //entity.setId(entity.getId());
+    	/*System.out.println("\n\nupdate");
         System.out.println("id: " + entity.getId());
         for(Attribute attr : entity.getAttributes()) {
         	System.out.println("attr entity_id: " + attr.getEntity_id() 
         			+ " attr_id: " + attr.getAttribute_id() 
         			+ " value: " + attr.getValue());
-        }
+        }*/
     	
     	em.merge(entity);
     }

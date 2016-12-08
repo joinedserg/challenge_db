@@ -6,10 +6,10 @@ import javax.persistence.*;
 
 
 public class AttributePK implements Serializable {
-	@Column(name="entity_id")
+	@Column(name="entity_id", insertable=true, updatable=false)
 	private Integer entity_id;
 	
-	@Column(name="attribute_id")
+	@Column(name="attribute_id", insertable=true, updatable=false)
 	private Integer attribute_id;
 	
 	

@@ -12,6 +12,5 @@ left outer join values on entities.entity_id = values.entity_id;
 
 create sequence serial start 1;
 
-select nextval('serial');
 
 drop sequence serial;

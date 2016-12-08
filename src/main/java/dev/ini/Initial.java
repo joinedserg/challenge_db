@@ -27,11 +27,18 @@ public class Initial {
         serviceEntity.save(entity);
         
         
-        entity = new BaseEntity("name2", "surname2");
-        serviceEntity.save(entity);
+        //entity = new BaseEntity("name2", "surname2");
+        //serviceEntity.save(entity);
         
-        entity.getAttributes().get(0).setValue("changed_value_attribute");
-        serviceEntity.update(entity);
+        /*System.out.println("\n\ngetAll");
+        List<BaseEntity> list = serviceEntity.getAll();
+        for(BaseEntity b : list) {
+        	System.out.println(b);
+        	
+        }*/
+        
+        //entity.getAttributes().get(0).setValue("changed_value_attribute");
+//        serviceEntity.update(entity);
         //serviceEntity.delete(entity);
     }
 
