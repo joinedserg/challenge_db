@@ -1,13 +1,21 @@
 package dev.models;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.*;
 
 @Entity(name="values")
 @IdClass(AttributePK.class)
 public class Attribute implements Serializable {
-
+	
+	public Attribute() {
+		
+	}
+	
+	public Attribute(Integer id) {
+		this.attribute_id = id;
+	}
 
 	@Id
 	//@GeneratedValue(strategy=GenerationType.SEQUENCE)
@@ -18,17 +26,6 @@ public class Attribute implements Serializable {
 	@Column(name="entity_id", insertable=true, updatable=false)
 	private Integer entity_id;
 	
-	//private String name;
-	
-	
-
-    /*public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}*/
 
 	public Integer getAttribute_id() {
 		return attribute_id;
@@ -53,6 +50,12 @@ public class Attribute implements Serializable {
 	@Column(name = "text_value", updatable = true, insertable=true)
     private String value;
 
+	@Column(name = "date_value", updatable = true, insertable=true)
+	private Date date_value;
+	
+	@Column(name = "int_value", updatable = true, insertable=true)
+	private Integer int_value;
+	
 
     public String getValue() {
         return value;

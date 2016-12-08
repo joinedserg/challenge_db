@@ -1,12 +1,13 @@
 package dev.models;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 import javax.persistence.*;
 
+import dev.ini.*;
+
+import dev.models.ini.*;
 
 //add
 //update
@@ -14,12 +15,30 @@ import javax.persistence.*;
 //select 
 
 
-@Entity
-@Table(name="entities")
+//@Entity
+//@Table(name="entities")
+//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+//@DiscriminatorColumn(name="published")
+//@DiscriminatorValue(value="false")
+@MappedSuperclass
 public class BaseEntity {
+	
     public BaseEntity() {
         attributes = new HashMap<Integer, Attribute>();
         
+    }
+    
+    //call only from children 
+    public BaseEntity(String entityName) {
+    	TypeOfEntity type = ContextType.getInstance().getTypeEntity(entityName);
+    	entityType = type.getTypeEntityID();
+    	
+    	attributes = new HashMap<Integer, Attribute>();
+    	for(TypeOfAttribute t : type.getAttributes()) {
+    		Attribute attr = new Attribute(t.getId());
+    		
+    		attributes.put(t.getId(), attr);	
+    	}
     }
     
     //TODO: Only 4 DEBUG!!!
@@ -39,20 +58,15 @@ public class BaseEntity {
         //attr.setEntity_id(1);
         attr.setAttribute_id(2);
         
-        
         this.attributes.put(2, attr);
-        
     }
-    
-    
     
     
     @Id
     //@GeneratedValue
     @Column(name="entity_id", insertable=true, updatable=false)
-    protected Integer id;
-    
-    
+    private Integer id;
+        
     
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER/*????*/)
     @MapKey(name = "attribute_id")
@@ -60,8 +74,12 @@ public class BaseEntity {
     	@JoinColumn(name="entity_id", referencedColumnName="entity_id", 
     			insertable=false, updatable=false),
     })
+    
     /*ID attribute, Attribute value*/
-    protected Map<Integer, Attribute> attributes;
+    private Map<Integer, Attribute> attributes;
+    
+    @Column(name="type_of_entity")
+    private Integer entityType;
     
     
     public Integer getId() {
@@ -77,13 +95,22 @@ public class BaseEntity {
     }
 	
     
-    public Map<Integer, Attribute> getAttributes() {
+    public Integer getEntityType() {
+		return entityType;
+	}
+
+	public void setEntityType(Integer entityType) {
+		this.entityType = entityType;
+	}
+
+	public Map<Integer, Attribute> getAttributes() {
 		return attributes;
 	}
 
 	public void setAttributes(Map<Integer, Attribute> attributes) {
 		this.attributes = attributes;
 	}
+	
 
 	
     public String toString() {

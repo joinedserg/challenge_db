@@ -30,7 +30,39 @@ public class Runner {
         
         
         MediaServiceEntity serviceEntity = (MediaServiceEntity) context.getBean("storageServiceUser");
-        BaseEntity entity = new BaseEntity("name1", "surname1");
+        /*Example entity*/
+        User user1 = new User();
+        serviceEntity.save(user1);
+        
+        
+        User user2 = new User();
+        user2.setName("name2");
+        serviceEntity.save(user2);
+        
+        User user3 = new User();
+        user3.setName("name3");
+        serviceEntity.save(user3);
+        
+        
+        System.out.println("\n\nUpdate");
+        user1.setName("new_name");
+        serviceEntity.update(user1);
+        
+        System.out.println("\n\nDelete");
+        serviceEntity.delete(user2);
+        
+        
+        System.out.println("\n\nGet all");
+        
+        /***TEMPLAAAAAAAAAAAAAAAAAAAAAAATE !!!!!!****/
+        List<BaseEntity> list = serviceEntity.getAll(User.class);
+        
+        for(BaseEntity b : list) {
+        	System.out.println(b);
+        }
+        
+        
+        /*BaseEntity entity = new BaseEntity("name1", "surname1");
         
         serviceEntity.save(entity);
         
@@ -69,7 +101,7 @@ public class Runner {
         list = serviceEntity.getAll();
         for(BaseEntity b : list) {
         	System.out.println(b);
-        }
+        }*/
     }
 
 }

@@ -22,9 +22,10 @@ public class ContextType {
         return context;
     }
     
-    private Map<String, TypeOfAttribute> availableAttributes;
     private Map<String, TypeOfEntity> availableEntities;
-    //priva
+    private Map<String, TypeOfAttribute> availableAttributes;
+    
+    
 
     public TypeOfAttribute getTypeAttribute(String name) {
         return availableAttributes.get(name);

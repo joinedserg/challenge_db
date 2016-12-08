@@ -45,21 +45,16 @@ public class MediaDaoEntityImpl implements MediaDaoEntity {
         em.persist(entity);
     }
 
-    public List<BaseEntity> getAll() {
-        List<BaseEntity> list = em.createQuery("from BaseEntity", BaseEntity.class).getResultList();
+    public List<BaseEntity> getAll(Class classType) {
+        List<BaseEntity> list = em.createQuery("from " + classType.getSimpleName(), classType).getResultList();
         return list;
     }
 
     @Override
     public void delete(BaseEntity entity) {
-    	//em.remove(em.merge(entity));
+    	//TODO: maybe change it a template?
     	//BaseEntity entity1 = em.find(BaseEntity.class, entity.getId());
-    	//entity = em.merge(entity1);
-    	
-    	BaseEntity entity1 = em.find(BaseEntity.class, entity.getId());
-    	
-    	System.out.println(entity1 + "\n");
-    	em.remove(entity1);
+    	em.remove(em.merge(entity));
     }
 
     @Override

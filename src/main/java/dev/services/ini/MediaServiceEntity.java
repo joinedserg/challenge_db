@@ -8,7 +8,7 @@ public interface MediaServiceEntity {
 
     public void save(BaseEntity entity);
 
-    public List<BaseEntity> getAll();
+    public List<BaseEntity> getAll(Class classType);
     
     public void update(BaseEntity entity);
     

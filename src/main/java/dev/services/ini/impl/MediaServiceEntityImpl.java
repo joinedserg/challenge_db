@@ -40,8 +40,8 @@ public class MediaServiceEntityImpl implements MediaServiceEntity {
     }
     
     @Override
-    public List<BaseEntity> getAll() {
-        return dao.getAll();
+    public List<BaseEntity> getAll(Class classType) {
+        return dao.getAll(classType);
     }
 
 	@Override
