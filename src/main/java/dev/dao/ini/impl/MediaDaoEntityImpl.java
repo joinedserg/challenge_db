@@ -41,7 +41,7 @@ public class MediaDaoEntityImpl implements MediaDaoEntity {
     public void save(BaseEntity entity) {
     	
     	entity.setId(getNextId());
-    	
+    	System.out.println("Save id: " + entity.getId());
         em.persist(entity);
     }
 
@@ -54,11 +54,13 @@ public class MediaDaoEntityImpl implements MediaDaoEntity {
     public void delete(BaseEntity entity) {
     	//TODO: maybe change it a template?
     	//BaseEntity entity1 = em.find(BaseEntity.class, entity.getId());
+    	System.out.println("Delete id: " + entity.getId());
     	em.remove(em.merge(entity));
     }
 
     @Override
     public void update(BaseEntity entity) {
+    	System.out.println("Update id: " + entity.getId());
     	em.merge(entity);
     }
 

@@ -69,13 +69,13 @@ public class Attribute implements Serializable {
     public boolean equals(Object o) {
     	if (this == o) 
 			return true;
-		if (!(o instanceof AttributePK)) 
+		if (!(o instanceof Attribute)) 
 			return false;
-		AttributePK targetId = (AttributePK) o;
+		Attribute target = (Attribute) o;
 		
-		if (attribute_id != null ? !attribute_id.equals(targetId.getAttribute_id()) : targetId.getAttribute_id() != null)
+		if (attribute_id != null ? !attribute_id.equals(target.getAttribute_id()) : target.getAttribute_id() != null)
 			return false;
-		if (entity_id != null ? !entity_id.equals(targetId.getEnitity_id()) : targetId.getEnitity_id() != null) 
+		if (entity_id != null ? !entity_id.equals(target.getEntity_id()) : target.getEntity_id() != null) 
 			return false;
 		
 
@@ -92,7 +92,7 @@ public class Attribute implements Serializable {
     
     public String toString() {
     	
-    	return "entity_id: " + this.entity_id 
+    	return "	entity_id: " + this.entity_id 
     			+ "  attribute_id: " + this.attribute_id 
     			+ "  value: " + this.value;
     }
