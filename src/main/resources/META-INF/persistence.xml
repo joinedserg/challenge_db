@@ -5,6 +5,10 @@
              version="2.0">
     <persistence-unit name="dev.persistence.unit">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        
+        <class>dev.models.User</class>
+        <class>dev.models.ChallengeRoadMap</class>
+        <class>dev.models.BaseEntity</class>
         <properties>
         `<!-- при замене create на validate стоит обратить внимание на порядок определения полей класса и базы -->
             <property name="hibernate.hbm2ddl.auto" value="create"/>

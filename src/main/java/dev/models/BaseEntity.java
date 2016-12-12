@@ -5,10 +5,10 @@ import java.util.*;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.DiscriminatorFormula;
 
 import dev.ini.*;
 import dev.models.ini.*;
+import org.hibernate.annotations.DiscriminatorFormula;
 
 //add
 //update
@@ -19,8 +19,11 @@ import dev.models.ini.*;
 @Entity
 @Table(name="entities")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorFormula("'GenericClient'") /*for hide dbtype*/
-//@MappedSuperclass
+//@DiscriminatorFormula("'GenericClient'") /*for hide dbtype*/
+//@DiscriminatorFormula("CASE "
+//        + "WHEN DTYPE in ('User', Chal) THEN DTYPE"
+//        + "ELSE 'Base'"
+//        + "END")
 public class BaseEntity {
 	
     @Id
@@ -34,10 +37,10 @@ public class BaseEntity {
     @JoinColumns({
     	@JoinColumn(name="entity_id", referencedColumnName="entity_id", 
     			insertable=false, updatable=false),
-    })
-    
+    })    
     /*ID attribute, Attribute value*/
     private Map<Integer, Attribute> attributes;
+    
     
     @Column(name="type_of_entity")
     private Integer entityType;
@@ -61,6 +64,7 @@ public class BaseEntity {
     }
     
     //call only from children 
+    static int i = 0;
     public BaseEntity(String entityName) {
     	children = new HashSet<BaseEntity>();
     	

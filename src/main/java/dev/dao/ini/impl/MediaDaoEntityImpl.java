@@ -45,8 +45,8 @@ public class MediaDaoEntityImpl implements MediaDaoEntity {
         em.persist(entity);
     }
 
-    public List<BaseEntity> getAll(Class classType) {
-        List<BaseEntity> list = em.createQuery("from " + classType.getSimpleName(), classType).getResultList();
+    public<T extends BaseEntity> List<T> getAll(Class classType) { 
+        List<T> list = em.createQuery("from " + classType.getSimpleName(), classType).getResultList();
         return list;
     }
 

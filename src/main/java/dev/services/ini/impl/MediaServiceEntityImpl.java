@@ -2,10 +2,8 @@ package dev.services.ini.impl;
 
 import java.util.List;
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import dev.models.*;
@@ -40,7 +38,7 @@ public class MediaServiceEntityImpl implements MediaServiceEntity {
     }
     
     @Override
-    public List<BaseEntity> getAll(Class classType) {
+    public<T extends BaseEntity> List<T> getAll(Class classType) {
         return dao.getAll(classType);
     }
 

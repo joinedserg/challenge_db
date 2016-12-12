@@ -7,7 +7,7 @@ import dev.models.*;
 public interface MediaDaoEntity {
 	
     public void save(BaseEntity entity);
-    public List<BaseEntity> getAll(Class classType);
+    public<T extends BaseEntity> List<T> getAll(Class classType);
     public void delete(BaseEntity entity);
     public void update(BaseEntity entity);
     
