@@ -100,9 +100,9 @@ public class Runner {
         System.out.println(user3.toString());
         System.out.println(user6.toString());
         
-        ChallengeRoadMap challengeRoadMap1 = new ChallengeRoadMap();        
+        /*ChallengeRoadMap challengeRoadMap1 = new ChallengeRoadMap();        
         challengeRoadMap1.setName("challengeName1");        
-        serviceEntity.save(challengeRoadMap1);
+        serviceEntity.save(challengeRoadMap1);*/
 
         /**
          * *TEMPLAAAAAAAAAAAAAAAAAAAAAAATE !!!!!!***

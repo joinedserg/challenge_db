@@ -5,10 +5,14 @@ import java.util.*;
 import javax.persistence.*;
 
 import dev.ini.ContextType;
+import org.hibernate.annotations.JoinColumnOrFormula;
+import org.hibernate.annotations.JoinColumnsOrFormulas;
+import org.hibernate.annotations.JoinFormula;
 import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "entities")
+//@SecondaryTable(name="relationship2")
 //@DiscriminatorValue(value="User")
 public class User extends BaseEntity {
 
@@ -20,10 +24,22 @@ public class User extends BaseEntity {
     }
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "relationship",
+    /*@JoinTable(name = "relationship2",
             joinColumns = @JoinColumn(name = "entity_id1", referencedColumnName = "entity_id"),
             inverseJoinColumns = @JoinColumn(name = "entity_id2", referencedColumnName = "entity_id")
-    )
+    )*/
+    @JoinColumnsOrFormulas(value={
+        @JoinColumnOrFormula(column=
+                @JoinColumn(table="relationship2", name = "entity_id1", referencedColumnName="entity_id")),
+        @JoinColumnOrFormula(column=
+                @JoinColumn(table="relationship2", name = "entity_id2", referencedColumnName="entity_id")),
+                        
+        
+        @JoinColumnOrFormula(formula=
+                @JoinFormula(referencedColumnName="attribute_id", value="'kkkkk'"))
+        
+    })
+    /**/
     @Where(clause="type_of_entity = 2")
     private List<ChallengeRoadMap> listChallengeRoadMap;
 
